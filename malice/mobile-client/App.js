@@ -86,19 +86,19 @@ const ProfileStackScreen = () => (
 export default () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState(null);
-  useEffect(() => {
-    const dev = async () => {
-      try {
-        await AsyncStorage.setItem(
-          'token',
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlkNzgyMTAzMTRmZTAwMDRiYmVlNjMiLCJpYXQiOjE2MjEwODY5NDZ9.nKb0fbphChfxG2QgWxQ94E2EBTlZX6PK-eebOx-LG0s'
-        );
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    dev();
-  }, []);
+  // useEffect(() => {
+  //   const dev = async () => {
+  //     try {
+  //       await AsyncStorage.setItem(
+  //         'token',
+  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlkNzgyMTAzMTRmZTAwMDRiYmVlNjMiLCJpYXQiOjE2MjEwODY5NDZ9.nKb0fbphChfxG2QgWxQ94E2EBTlZX6PK-eebOx-LG0s'
+  //       );
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //   dev();
+  // }, []);
   const authContext = useMemo(() => {
     return {
       signIn: async token => {
