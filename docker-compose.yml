@@ -1,0 +1,32 @@
+version: '2.4'
+
+services:
+    malice:
+        build:
+            context: .
+        tty: true
+        ports:
+            - '19000:19000'
+            - '19001:19001'
+            - '19002:19002'
+            - '19006:19006'
+        volumes:
+            - ./malice:/opt/malice/app:delegated
+            - ./malice/mobile-client/package.json:/opt/malice/app/mobile-client/package.json
+            - ./malice/mobile-client/package-lock.json:/opt/malice/app/mobile-client/package-lock.json
+            - notused:/opt/malice/app/node_modules
+        healthcheck:
+            disable: true
+    backend:
+    # will build ./app/server/Dockerfile
+        build: 
+            ./malice/
+        ports:
+            - '5000:5000'
+        volumes:
+          - ./malice/api:/usr/src/app/api:delegated
+          - ./malice/package.json:/usr/src/app/package.json
+          - ./malice/package-lock.json:/usr/src/app/package-lock.json
+          - notused:/usr/src/app/node_modules
+volumes:
+  notused:

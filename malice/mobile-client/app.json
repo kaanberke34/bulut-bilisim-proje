@@ -1,0 +1,13 @@
+{
+  "name": "mobile-client",
+  "displayName": "mobile-client",
+  "expo": {
+    "name": "cloudbulut",
+    "slug": "cloudbulut",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "description": ""
+  }
+}
