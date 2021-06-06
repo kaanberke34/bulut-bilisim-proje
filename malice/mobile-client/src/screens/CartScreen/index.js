@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
-import { View, ScrollView, Text, Pressable, Image, Alert } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, ScrollView,Modal, Text, Pressable, Image, Alert } from 'react-native';
 import { CartContext } from '../../tools/context';
 import styles from './styles';
 const CartScreen = ({ navigation }) => {
   const context = useContext(CartContext);
+  const [modalVisible, setModalVisible] = useState(false);
+
   const complete = () => {
-    Alert.alert('Tebrikler Alışveriş Başarılı'), context.emptyCart();
+   context.emptyCart();
+   setModalVisible(true)
   };
+
   const totalAmount = context.state.cart.reduce(
     (total, product) => (total = total + product.price * product.count),
     0
@@ -17,6 +21,7 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      
       {context.state.cart.length > 0 ? (
         <ScrollView>
           <Pressable
@@ -81,6 +86,31 @@ const CartScreen = ({ navigation }) => {
       ) : (
         <Text style={styles.textLight}>Sepet boş!</Text>
       )}
+      {modalVisible && (
+    <View >
+      <Modal
+      style={{border:'none'}}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => {
+          Alert.alert("Kapandı");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View >
+          <View style={styles.modalView}>
+            <Text>Alışveriş Başarılı!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text>Kapat</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+    </View>
+    )}
     </View>
   );
 };

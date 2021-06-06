@@ -14,6 +14,7 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import DrawerContent from './src/components/Drawer';
 import TabsScreen from './src/components/BottomTab';
 
+
 const RootStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
@@ -207,6 +208,7 @@ export default () => {
           emptyCart,
           removeFromCart
         }}
+        
       >
         <NavigationContainer>
           <RootStackScreen userToken={userToken} />

@@ -7,6 +7,7 @@ import { CartContext } from '../../tools/context';
 
 import ImageCarousel from './ImageCarousel';
 
+
 const DetailsScreen = ({ route }) => {
   const context = useContext(CartContext);
 
