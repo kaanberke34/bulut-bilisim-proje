@@ -1,7 +1,7 @@
 version: "3"
 services:
     client:
-        image: client
+        image: berkekaan/malice:client
         stdin_open: true
         ports:
             - "19006:19006"
@@ -13,7 +13,7 @@ services:
             - ./malice/mobile-client/package-lock.json:/opt/malice/app/mobile-client/package-lock.json
             - notused:/opt/malice/app/node_modules
     api:
-        image: api
+        image: berkekaan/malice:api
         stdin_open: true
         ports:
             - "5000:5000"
